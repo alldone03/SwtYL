@@ -1,0 +1,20 @@
+# Ignore compiled Python files
+__pycache__/
+*.pyc
+
+# Ignore annotations and intermediate files
+annotations/
+labels/
+
+# Ignore model weights and configurations
+yolo/weights/
+yolo/cfg/
+
+# Ignore logs and temporary files
+logs/
+*.log
+*.tmp
+
+# Ignore virtual environment directories
+venv/
+env/
