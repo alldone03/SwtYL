@@ -6,56 +6,21 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1022</width>
-    <height>643</height>
+    <width>1280</width>
+    <height>720</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QWidget" name="verticalLayoutWidget">
-    <property name="geometry">
-     <rect>
-      <x>0</x>
-      <y>0</y>
-      <width>1021</width>
-      <height>80</height>
-     </rect>
-    </property>
-    <layout class="QVBoxLayout" name="verticalLayout">
-     <item>
-      <widget class="QLabel" name="label">
-       <property name="font">
-        <font>
-         <pointsize>24</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
-        </font>
-       </property>
-       <property name="layoutDirection">
-        <enum>Qt::LeftToRight</enum>
-       </property>
-       <property name="text">
-        <string>Harvesting Sickle</string>
-       </property>
-       <property name="scaledContents">
-        <bool>false</bool>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignCenter</set>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </widget>
    <widget class="QLabel" name="Camera">
     <property name="geometry">
      <rect>
-      <x>10</x>
+      <x>30</x>
       <y>100</y>
-      <width>640</width>
-      <height>480</height>
+      <width>480</width>
+      <height>360</height>
      </rect>
     </property>
     <property name="maximumSize">
@@ -72,14 +37,17 @@
     <property name="text">
      <string>Camera</string>
     </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
    </widget>
    <widget class="QPushButton" name="Capture">
     <property name="geometry">
      <rect>
-      <x>700</x>
-      <y>310</y>
-      <width>299</width>
-      <height>61</height>
+      <x>590</x>
+      <y>360</y>
+      <width>121</width>
+      <height>51</height>
      </rect>
     </property>
     <property name="text">
@@ -89,59 +57,42 @@
    <widget class="QLabel" name="label_3">
     <property name="geometry">
      <rect>
-      <x>700</x>
-      <y>370</y>
+      <x>470</x>
+      <y>480</y>
       <width>299</width>
       <height>31</height>
      </rect>
     </property>
     <property name="text">
-     <string>Input Buah Jatuh</string>
+     <string>Input Fruit Drop </string>
     </property>
-   </widget>
-   <widget class="QSpinBox" name="input_buah_jatuh">
-    <property name="geometry">
-     <rect>
-      <x>700</x>
-      <y>410</y>
-      <width>299</width>
-      <height>26</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="btn_Input_buah_jatuh">
-    <property name="geometry">
-     <rect>
-      <x>700</x>
-      <y>450</y>
-      <width>299</width>
-      <height>61</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Input</string>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
     </property>
    </widget>
    <widget class="QLabel" name="label_2">
     <property name="geometry">
      <rect>
-      <x>700</x>
-      <y>520</y>
-      <width>297</width>
+      <x>800</x>
+      <y>470</y>
+      <width>211</width>
       <height>41</height>
      </rect>
     </property>
     <property name="text">
-     <string>Result</string>
+     <string>Decision</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
     </property>
    </widget>
    <widget class="QLabel" name="Camera_2">
     <property name="geometry">
      <rect>
-      <x>720</x>
+      <x>770</x>
       <y>100</y>
-      <width>256</width>
-      <height>192</height>
+      <width>480</width>
+      <height>360</height>
      </rect>
     </property>
     <property name="maximumSize">
@@ -156,7 +107,209 @@
      </font>
     </property>
     <property name="text">
+     <string>Result Detection</string>
+    </property>
+    <property name="textFormat">
+     <enum>Qt::AutoText</enum>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>150</x>
+      <y>10</y>
+      <width>1019</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>24</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="layoutDirection">
+     <enum>Qt::LeftToRight</enum>
+    </property>
+    <property name="text">
+     <string>Harvesting Sickle</string>
+    </property>
+    <property name="scaledContents">
+     <bool>false</bool>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_4">
+    <property name="geometry">
+     <rect>
+      <x>120</x>
+      <y>70</y>
+      <width>299</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
      <string>Camera</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_5">
+    <property name="geometry">
+     <rect>
+      <x>870</x>
+      <y>70</y>
+      <width>299</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Captured</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btn_buahjatuh">
+    <property name="geometry">
+     <rect>
+      <x>470</x>
+      <y>530</y>
+      <width>299</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Input</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_6">
+    <property name="geometry">
+     <rect>
+      <x>480</x>
+      <y>610</y>
+      <width>101</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Result Input</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="val_buahjatuh">
+    <property name="geometry">
+     <rect>
+      <x>600</x>
+      <y>610</y>
+      <width>101</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>0</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btn_nomorPohon">
+    <property name="geometry">
+     <rect>
+      <x>90</x>
+      <y>530</y>
+      <width>299</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Input</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_8">
+    <property name="geometry">
+     <rect>
+      <x>90</x>
+      <y>480</y>
+      <width>299</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Input Number Tree</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="val_nomorpohon">
+    <property name="geometry">
+     <rect>
+      <x>220</x>
+      <y>610</y>
+      <width>101</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>0</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_10">
+    <property name="geometry">
+     <rect>
+      <x>100</x>
+      <y>610</y>
+      <width>101</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Result Input</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_11">
+    <property name="geometry">
+     <rect>
+      <x>800</x>
+      <y>520</y>
+      <width>211</width>
+      <height>141</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Result</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btn_showtableresult">
+    <property name="geometry">
+     <rect>
+      <x>1040</x>
+      <y>470</y>
+      <width>201</width>
+      <height>191</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Input</string>
     </property>
    </widget>
   </widget>
@@ -165,7 +318,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1022</width>
+     <width>1280</width>
      <height>22</height>
     </rect>
    </property>
