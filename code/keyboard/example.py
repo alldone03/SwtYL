@@ -46,9 +46,10 @@ class Ui_MainWindow(object):
 
     def onClick(self,e):
         self.MainWindow.setEnabled(True)
-
-    def callBackOnSubmit(self, arg1, arg2): 
-        print("Function is called with args: %s & %s" % (arg1, arg2))
+    
+    def callBackOnSubmit(self, arg1, arg2,data):
+        print(data)
+        
 
 if __name__ == "__main__":
     import sys

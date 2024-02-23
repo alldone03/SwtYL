@@ -5,6 +5,7 @@ from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QLabel,QWidget
 
 class numberPopup(QWidget):
+    data = ""
     def __init__(self, Form, numberSet, constantText = "" , callOnSubmit = None, *args):
         super().__init__()
         self.numberSet = numberSet
@@ -195,14 +196,16 @@ class numberPopup(QWidget):
         self.lineEdit.setText(self.lineEdit.text() + '9')
 
     def push_buttonsubmit_clicked(self):
-        print(self.lineEdit.text()  + " is entered")
+        # print(self.lineEdit.text()  + " is entered")
         self.hide()
         if self.lineEdit.text() != "":
             self.numberSet.setText(self.constantText + self.lineEdit.text())
         self.Form.setEnabled(True)
-        
+        self.data = str(self.lineEdit.text())
+        # print(self.data)
         if self.callOnSubmit != None:
-            self.callOnSubmit(*self.args)
+            self.callOnSubmit(*self.args,self.data)
+            # self.callOnSubmit(*self.data)
 
     def pushButton_erase_clicked(self):
         text = self.lineEdit.text()
