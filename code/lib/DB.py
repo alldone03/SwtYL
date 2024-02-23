@@ -43,8 +43,9 @@ class Database:
         pass
     def update_table(self,function)->None:
         
-        function()
+        # function()
+        pass
     
-db = Database()
-db.add_record(1, 2, 1, 1, 1, "matang")
-db.view_records()
+# db = Database()
+# db.add_record(1, 2, 1, 1, 1, "matang")
+# db.view_records()
