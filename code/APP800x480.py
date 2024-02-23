@@ -111,7 +111,6 @@ class Ui_MainWindow(object):
     value_buahjatuh = 0
     def setupUi(self, MainWindow) -> None:
         self.MainWindow = MainWindow
-        MainWindow.setObjectName("MainWindow")
         MainWindow.resize(800, 480)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
@@ -270,12 +269,12 @@ class Ui_MainWindow(object):
         MainWindow.setStatusBar(self.statusbar)
 
         self.retranslateUi(MainWindow)
-        self.stackedWidget.setCurrentIndex(1)
+        self.stackedWidget.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "Harvesting Sickle"))
         self.Camera.setText(_translate("MainWindow", "Camera"))
         self.Camera_2.setText(_translate("MainWindow", "Result Detection"))
         self.btn_processdecision.setText(_translate("MainWindow", "Submit"))
