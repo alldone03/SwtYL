@@ -45,7 +45,6 @@ class Database:
         query.exec_("SELECT * FROM tb_data ORDER BY id DESC;")
         while query.next():
             array.append([query.value(0), query.value(1), query.value(2), query.value(3), query.value(4), query.value(5), query.value(6)])
-            # print(query.value(0), query.value(1), query.value(2), query.value(3), query.value(4), query.value(5), query.value(6))
         pass
     def delete_record(self, numbertree) -> None:
         query = QSqlQuery()
@@ -58,9 +57,9 @@ class Database:
 
 class Camera(QThread):
     frameCaptured = pyqtSignal(QImage) # create signal
-    saved_frame = None
-    model = None
-    datajumlahterdeteksi = [0,0,0]
+    saved_frame = None # create saved frame
+    model = None # create model
+    datajumlahterdeteksi = [0,0,0] # create data jumlah terdeteksi
     model = torch.hub.load(r'../yolo', 'custom', path='/home/alldone/Desktop/sawit-yolo/model/content/yolov5/runs/train/exp5/weights/best.pt', source='local',
                        force_reload=True, device='cpu')
     def __init__(self) -> None:
@@ -89,11 +88,9 @@ class Camera(QThread):
         cv2.resize(self.saved_frame, (640, 480))
         self.results = self.model(self.saved_frame)
         self.tag = self.results.names
-        # print(self.tag)
         self.datajumlahterdeteksi = [0,0,0]
         for i in self.results.xyxy[0]:
             self.datajumlahterdeteksi[int(i[5])] = self.datajumlahterdeteksi[int(i[5])] + 1
-        # print(datajumlahterdeteksi)
         cv_img = np.squeeze(self.results.render())
         # pass
         return cv_img
@@ -107,8 +104,8 @@ class Camera(QThread):
 class Ui_MainWindow(object):
     camera = Camera() # create camera object
     mydb = Database() # create database object
-    value_nomorpohon = 0
-    value_buahjatuh = 0
+    value_nomorpohon = 0 # value nomor pohon
+    value_buahjatuh = 0 # value buah jatuh
     def setupUi(self, MainWindow) -> None:
         self.MainWindow = MainWindow
         MainWindow.resize(800, 480)
@@ -311,9 +308,6 @@ class Ui_MainWindow(object):
 "Table"))
         
         
-        
-        
-        
         #action is clicked
         self.btn_processdecision.clicked.connect(self.makeDecision)
         self.btn_showtableresult_2.clicked.connect(self.changetotable)
@@ -329,7 +323,7 @@ class Ui_MainWindow(object):
     def nomorpohon_push_button_clicked(self) -> None:
         self.MainWindow.setEnabled(False)
         self.exPopup = numberPopup(self.MainWindow,self.val_nomorpohon, "", self.nomorpohon_callBackOnSubmit, "Argument 1", "Argument 2")
-        self.exPopup.setGeometry(130, 320,400, 300)
+        self.exPopup.setGeometry(0, 0,400, 300)
         self.exPopup.show()
     def nomorpohon_onClick(self,e) -> None:
         self.MainWindow.setEnabled(True)
@@ -339,7 +333,7 @@ class Ui_MainWindow(object):
     def buahjatuh_push_button_clicked(self) -> None:
         self.MainWindow.setEnabled(False)
         self.exPopup = numberPopup(self.MainWindow,self.val_buahjatuh, "", self.buahjatuh_callBackOnSubmit, "Argument 1", "Argument 2")
-        self.exPopup.setGeometry(130, 320,400, 300)
+        self.exPopup.setGeometry(0, 0,400, 300)
         self.exPopup.show()
     def buahjatuh_onClick(self,e) -> None:
         self.MainWindow.setEnabled(True)
@@ -380,17 +374,14 @@ class Ui_MainWindow(object):
     # sumbit decision
     def makeDecision(self) -> None:
         self.mydb.add_record(numbertree=self.value_nomorpohon,matang= self.camera.datajumlahterdeteksi[1], mentah=self.camera.datajumlahterdeteksi[2], busuk=self.camera.datajumlahterdeteksi[0], buahjatuh=self.value_buahjatuh, keputusan="matang")
-        # self.tableWidget.setItem(1,1, QTableWidgetItem("Indore"))
         array = []
         self.mydb.view_records(array)
-        # print(array)
         self.tableWidget.setColumnCount(len(array[0]))
         self.tableWidget.setRowCount(len(array))
         for i, row in enumerate(array):
             for j, item in enumerate(row):
                 self.tableWidget.setItem(i, j, QTableWidgetItem(str(item)))
         pass
-        
 
 def main() -> None:
     import sys
