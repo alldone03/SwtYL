@@ -320,21 +320,21 @@ of Tree</string>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout">
      <item>
-      <widget class="QLabel" name="label">
+      <widget class="QLabel" name="lbl_matang">
        <property name="text">
         <string>Matang : </string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QLabel" name="label_3">
+      <widget class="QLabel" name="lbl_mentah">
        <property name="text">
         <string>Mentah :</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QLabel" name="label_4">
+      <widget class="QLabel" name="lbl_busuk">
        <property name="text">
         <string>Busuk    :</string>
        </property>
