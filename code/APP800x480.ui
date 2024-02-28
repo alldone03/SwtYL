@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="page">
      <widget class="QLabel" name="Camera">
@@ -313,7 +313,7 @@
         <x>170</x>
         <y>230</y>
         <width>91</width>
-        <height>71</height>
+        <height>81</height>
        </rect>
       </property>
       <property name="sizePolicy">
@@ -367,13 +367,14 @@ of Tree</string>
         <x>430</x>
         <y>230</y>
         <width>91</width>
-        <height>71</height>
+        <height>81</height>
        </rect>
       </property>
       <property name="text">
        <string>Input 
 Fruit 
-Drop</string>
+Drop
+(Brondolan)</string>
       </property>
       <property name="checkable">
        <bool>true</bool>
@@ -430,7 +431,7 @@ Drop</string>
       <property name="geometry">
        <rect>
         <x>720</x>
-        <y>280</y>
+        <y>290</y>
         <width>71</width>
         <height>71</height>
        </rect>

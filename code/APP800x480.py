@@ -249,7 +249,7 @@ class Ui_MainWindow(object):
         item = QtWidgets.QTableWidgetItem()
         self.tableWidget.setHorizontalHeaderItem(6, item)
         self.btn_hidetableresult = QtWidgets.QPushButton(self.page_2)
-        self.btn_hidetableresult.setGeometry(QtCore.QRect(720, 280, 71, 71))
+        self.btn_hidetableresult.setGeometry(QtCore.QRect(720, 290, 71, 71))
         self.btn_hidetableresult.setObjectName("btn_hidetableresult")
         self.stackedWidget.addWidget(self.page_2)
         MainWindow.setCentralWidget(self.centralwidget)
@@ -262,7 +262,7 @@ class Ui_MainWindow(object):
         MainWindow.setStatusBar(self.statusbar)
 
         self.retranslateUi(MainWindow)
-        self.stackedWidget.setCurrentIndex(1)
+        self.stackedWidget.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
