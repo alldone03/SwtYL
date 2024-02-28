@@ -307,6 +307,7 @@ class Ui_MainWindow(object):
         
         
         #action is clicked
+        
         self.btn_processdecision.clicked.connect(self.makeDecision)
         self.btn_showtableresult_2.clicked.connect(self.changetotable)
         self.btn_hidetableresult.clicked.connect(self.changetomain)
@@ -316,7 +317,6 @@ class Ui_MainWindow(object):
         
         self.camera.frameCaptured.connect(self.update_image) # connect signal to slot
         self.camera.start()
-        
     # event show numpad to nomor pohon
     def nomorpohon_push_button_clicked(self) -> None:
         self.MainWindow.setEnabled(False)
@@ -385,6 +385,7 @@ def main() -> None:
     import sys
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
+    MainWindow.showMaximized()
     ui = Ui_MainWindow()
     ui.setupUi(MainWindow)
     MainWindow.show()
