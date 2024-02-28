@@ -204,7 +204,7 @@ class Ui_MainWindow(object):
         self.label_7.setText("")
         self.label_7.setObjectName("label_7")
         self.btn_nomorPohon = QtWidgets.QPushButton(self.page)
-        self.btn_nomorPohon.setGeometry(QtCore.QRect(170, 230, 91, 71))
+        self.btn_nomorPohon.setGeometry(QtCore.QRect(170, 230, 91, 81))
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Minimum)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -223,7 +223,7 @@ class Ui_MainWindow(object):
         self.label_2.setObjectName("label_2")
         self.btn_buahjatuh = QtWidgets.QPushButton(self.page)
         self.btn_buahjatuh.setEnabled(True)
-        self.btn_buahjatuh.setGeometry(QtCore.QRect(430, 230, 91, 71))
+        self.btn_buahjatuh.setGeometry(QtCore.QRect(430, 230, 91, 81))
         self.btn_buahjatuh.setCheckable(True)
         self.btn_buahjatuh.setObjectName("btn_buahjatuh")
         self.stackedWidget.addWidget(self.page)
@@ -285,7 +285,8 @@ class Ui_MainWindow(object):
         self.label_2.setText(_translate("MainWindow", "Decision"))
         self.btn_buahjatuh.setText(_translate("MainWindow", "Input \n"
 "Fruit \n"
-"Drop"))
+"Drop\n"
+"(Brondolan)"))
         item = self.tableWidget.horizontalHeaderItem(0)
         item.setText(_translate("MainWindow", "ID"))
         item = self.tableWidget.horizontalHeaderItem(1)
