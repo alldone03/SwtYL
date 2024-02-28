@@ -1,7 +1,7 @@
 
 
-mkdir venv && python3 -m venv venv
-source venv/bin/activate
+# mkdir venv && python3 -m venv venv
+# . venv/bin/activate
 pip install -r requirements.txt
 unzip model.zip -d model
 cd ..

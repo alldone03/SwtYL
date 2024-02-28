@@ -11,48 +11,37 @@ from lib.number_pad import numberPopup
 import numpy as np
 import res_rc
 import time
-from PyQt5.QtSql import QSqlDatabase, QSqlQuery
+import sqlite3
 
 class Database:
     def __init__(self) -> None:
-        db = QSqlDatabase.addDatabase('QSQLITE')
-        db.setDatabaseName('logging.db')
-        db.open()
-        query = QSqlQuery()
-        query.exec_("""CREATE TABLE IF NOT EXISTS tb_data (
-                        id INTEGER PRIMARY KEY AUTOINCREMENT,
-                        numbertree INTERGER,
-                        matang INTEGER,
-                        mentah INTEGER,
-                        busuk INTEGER,
-                        buahjatuh INTEGER,
-                        keputusan TEXT
-                    )""")
-        pass
-    def add_record(self, numbertree, buahjatuh, keputusan,matang=0, mentah=0, busuk=0,) -> None:
-        query = QSqlQuery()
-        query.prepare("INSERT INTO tb_data (numbertree, matang, mentah, busuk, buahjatuh, keputusan) VALUES (?, ?, ?, ?, ?, ?)")
-        query.addBindValue(numbertree)
-        query.addBindValue(matang)
-        query.addBindValue(mentah)
-        query.addBindValue(busuk)
-        query.addBindValue(buahjatuh)
-        query.addBindValue(keputusan)
-        query.exec_()
-        pass
-    def view_records(self,array) -> None:
-        query = QSqlQuery()
-        query.exec_("SELECT * FROM tb_data ORDER BY id DESC;")
-        while query.next():
-            array.append([query.value(0), query.value(1), query.value(2), query.value(3), query.value(4), query.value(5), query.value(6)])
-        pass
+        self.conn = sqlite3.connect('logging.db')
+        self.cursor = self.conn.cursor()
+        self.cursor.execute('''CREATE TABLE IF NOT EXISTS tb_data (
+                                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                                numbertree INTEGER,
+                                matang INTEGER,
+                                mentah INTEGER,
+                                busuk INTEGER,
+                                buahjatuh INTEGER,
+                                keputusan TEXT
+                            )''')
+        self.conn.commit()
+
+    def add_record(self, numbertree, buahjatuh, keputusan, matang=0, mentah=0, busuk=0) -> None:
+        self.cursor.execute("INSERT INTO tb_data (numbertree, matang, mentah, busuk, buahjatuh, keputusan) VALUES (?, ?, ?, ?, ?, ?)",
+                            (numbertree, matang, mentah, busuk, buahjatuh, keputusan))
+        self.conn.commit()
+
+    def view_records(self, array) -> None:
+        self.cursor.execute("SELECT * FROM tb_data ORDER BY id DESC")
+        rows = self.cursor.fetchall()
+        for row in rows:
+            array.append(row)
+
     def delete_record(self, numbertree) -> None:
-        query = QSqlQuery()
-        query.prepare("DELETE FROM tb_data WHERE numbertree = ?")
-        query.addBindValue(numbertree)
-        query.exec_()
-        pass
-    
+        self.cursor.execute("DELETE FROM tb_data WHERE numbertree = ?", (numbertree,))
+        self.conn.commit()
 
 
 class Camera(QThread):
@@ -76,7 +65,7 @@ class Camera(QThread):
             ret, frame = self.capture.read() # read frame from camera
             self.saved_frame = frame.copy()
             if ret:
-                frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB) # convert frame to RGB
+                frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB) # convert frame to RGB 
                 h, w, ch = frame.shape # get frame shape
                 bytesPerLine = ch * w # get bytes per line
                 convert_to_qt_format = QImage(frame.data, w, h, bytesPerLine, QImage.Format_RGB888) # convert frame to QImage
@@ -394,3 +383,5 @@ def main() -> None:
             
 if __name__ == "__main__":
     main()
+    
+

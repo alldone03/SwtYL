@@ -14,6 +14,7 @@ yolo/cfg/
 logs/
 *.log
 *.tmp
+*.db
 
 # Ignore virtual environment directories
 venv/
