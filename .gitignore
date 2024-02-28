@@ -15,7 +15,7 @@ logs/
 *.log
 *.tmp
 *.db
-
+.env
 # Ignore virtual environment directories
 venv/
 env/
