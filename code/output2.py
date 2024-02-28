@@ -14,7 +14,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(800, 442)
+        MainWindow.resize(800, 438)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.stackedWidget = QtWidgets.QStackedWidget(self.centralwidget)
@@ -140,7 +140,7 @@ class Ui_MainWindow(object):
         self.page_2 = QtWidgets.QWidget()
         self.page_2.setObjectName("page_2")
         self.tableWidget = QtWidgets.QTableWidget(self.page_2)
-        self.tableWidget.setGeometry(QtCore.QRect(10, 10, 701, 421))
+        self.tableWidget.setGeometry(QtCore.QRect(10, 10, 701, 361))
         self.tableWidget.setObjectName("tableWidget")
         self.tableWidget.setColumnCount(7)
         self.tableWidget.setRowCount(0)
@@ -159,7 +159,7 @@ class Ui_MainWindow(object):
         item = QtWidgets.QTableWidgetItem()
         self.tableWidget.setHorizontalHeaderItem(6, item)
         self.btn_hidetableresult = QtWidgets.QPushButton(self.page_2)
-        self.btn_hidetableresult.setGeometry(QtCore.QRect(720, 350, 71, 71))
+        self.btn_hidetableresult.setGeometry(QtCore.QRect(720, 280, 71, 71))
         self.btn_hidetableresult.setObjectName("btn_hidetableresult")
         self.stackedWidget.addWidget(self.page_2)
         MainWindow.setCentralWidget(self.centralwidget)
@@ -172,7 +172,7 @@ class Ui_MainWindow(object):
         MainWindow.setStatusBar(self.statusbar)
 
         self.retranslateUi(MainWindow)
-        self.stackedWidget.setCurrentIndex(0)
+        self.stackedWidget.setCurrentIndex(1)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):

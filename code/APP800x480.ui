@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>800</width>
-    <height>442</height>
+    <height>438</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="page">
      <widget class="QLabel" name="Camera">
@@ -387,7 +387,7 @@ Drop</string>
         <x>10</x>
         <y>10</y>
         <width>701</width>
-        <height>421</height>
+        <height>361</height>
        </rect>
       </property>
       <column>
@@ -430,7 +430,7 @@ Drop</string>
       <property name="geometry">
        <rect>
         <x>720</x>
-        <y>350</y>
+        <y>280</y>
         <width>71</width>
         <height>71</height>
        </rect>
