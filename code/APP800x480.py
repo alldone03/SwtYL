@@ -103,7 +103,7 @@ class Ui_MainWindow(object):
     value_buahjatuh = 0 # value buah jatuh
     def setupUi(self, MainWindow) -> None:
         self.MainWindow = MainWindow
-               MainWindow.setObjectName("MainWindow")
+        MainWindow.setObjectName("MainWindow")
         MainWindow.resize(800, 438)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
