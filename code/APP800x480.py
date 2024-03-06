@@ -16,8 +16,8 @@ from dotenv import load_dotenv
 load_dotenv()
 ModelYolo = os.getenv("MODEL_YOLO")
 PathYolo = os.getenv("PATH_YOLO")
-CameraRealtime = os.getenv("CAMERA")
-print(ModelYolo,PathYolo,CameraRealtime)
+CameraRealtime = os.getenv("CAMERA_YOLO")
+print("Use Model: " + ModelYolo+"\nYolo Path: "+PathYolo+"\nID Camera: "+CameraRealtime)
 
 class Database:
     def __init__(self) -> None:
@@ -60,6 +60,7 @@ class Camera(QThread):
     def __init__(self) -> None:
         super().__init__()
         self.capture = cv2.VideoCapture(int(CameraRealtime)) # capture video from camera
+        # self.capture = cv2.VideoCapture(0) # capture video from camera
         
         self.model.conf = 0.7
         self.model.line_thickness = 1
@@ -101,6 +102,7 @@ class Ui_MainWindow(object):
     mydb = Database() # create database object
     value_nomorpohon = 0 # value nomor pohon
     value_buahjatuh = 0 # value buah jatuh
+    value_keputusan = "-" # value keputusan
     def setupUi(self, MainWindow) -> None:
         self.MainWindow = MainWindow
         MainWindow.setObjectName("MainWindow")
@@ -338,7 +340,15 @@ class Ui_MainWindow(object):
         self.MainWindow.setEnabled(True)
     def buahjatuh_callBackOnSubmit(self, arg1, arg2,data) -> None:
         self.value_buahjatuh = data
+        self.buahjatuh_classification(data)
     
+    #clasification kematangan
+    def buahjatuh_classification(self,data) -> None:
+        if int(data) >= 10:
+            self.value_keputusan = "matang"
+        elif int(data) < 10:
+            self.value_keputusan = "mentah"
+  
     # Show UI to Image
     def showToUI(self,frame, label) -> None:
         pixmap = QPixmap.fromImage(frame)
@@ -372,7 +382,26 @@ class Ui_MainWindow(object):
         
     # sumbit decision
     def makeDecision(self) -> None:
-        self.mydb.add_record(numbertree=self.value_nomorpohon,matang= self.camera.datajumlahterdeteksi[1], mentah=self.camera.datajumlahterdeteksi[2], busuk=self.camera.datajumlahterdeteksi[0], buahjatuh=self.value_buahjatuh, keputusan="matang")
+        keputusankamera = ""
+        #mencari nilai tertinggi di array data jumlah terdeteksi
+        max_value = max(self.camera.datajumlahterdeteksi)
+        #mencari index nilai tertinggi di array data jumlah terdeteksi
+        max_index = self.camera.datajumlahterdeteksi.index(max_value)
+        #mencari data keputusan
+        if max_index == 0:
+            keputusankamera = "busuk"
+        elif max_index == 1:
+            keputusankamera = "matang"
+        elif max_index == 2:
+            keputusankamera = "mentah"
+            
+        if keputusankamera == self.value_keputusan:
+            self.value_keputusan = "Siap Panen"
+        else:
+            self.value_keputusan = "Tidak Siap Panen"
+        self.resultdecision.setText(self.value_keputusan)
+            
+        self.mydb.add_record(numbertree=self.value_nomorpohon,matang= self.camera.datajumlahterdeteksi[1], mentah=self.camera.datajumlahterdeteksi[2], busuk=self.camera.datajumlahterdeteksi[0], buahjatuh=self.value_buahjatuh, keputusan=self.value_keputusan)
         array = []
         self.mydb.view_records(array)
         self.tableWidget.setColumnCount(len(array[0]))
@@ -380,13 +409,22 @@ class Ui_MainWindow(object):
         for i, row in enumerate(array):
             for j, item in enumerate(row):
                 self.tableWidget.setItem(i, j, QTableWidgetItem(str(item)))
+        self.camera.datajumlahterdeteksi = [0,0,0]
+        self.value_buahjatuh = self.value_nomorpohon = 0
+        self.value_keputusan = "-"
+        self.lbl_busuk_2.setText("Busuk    : 0")
+        self.lbl_matang_2.setText("Matang : 0")
+        self.lbl_mentah_2.setText("Mentah : 0")
+        self.val_nomorpohon.setText("0")
+        self.val_buahjatuh.setText("0")
+        # self.resultdecision.setText("Result Decision")
         pass
 
 def main() -> None:
     import sys
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
-    MainWindow.showMaximized()
+    # MainWindow.showMaximized()
     ui = Ui_MainWindow()
     ui.setupUi(MainWindow)
     MainWindow.show()
