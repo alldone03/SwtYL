@@ -11,6 +11,7 @@ import numpy as np
 import res_rc
 import time
 import sqlite3
+
 import os
 from dotenv import load_dotenv
 load_dotenv()
@@ -320,6 +321,7 @@ class Ui_MainWindow(object):
         
         self.camera.frameCaptured.connect(self.update_image) # connect signal to slot
         self.camera.start()
+        
     # event show numpad to nomor pohon
     def nomorpohon_push_button_clicked(self) -> None:
         self.MainWindow.setEnabled(False)
