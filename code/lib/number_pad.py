@@ -199,7 +199,8 @@ class numberPopup(QWidget):
         # print(self.lineEdit.text()  + " is entered")
         self.hide()
         if self.lineEdit.text() != "":
-            self.numberSet.setText(self.constantText + self.lineEdit.text())
+            # self.numberSet.setText(self.constantText + self.lineEdit.text())
+            pass
         self.Form.setEnabled(True)
         self.data = str(self.lineEdit.text())
         # print(self.data)
