@@ -2,7 +2,7 @@
 from egrekdigitalv2 import Ui_MainWindow
 
 # Mengimpor modul QtWidgets dari PyQt5
-from PyQt5 import QtWidgets 
+from PyQt5 import QtWidgets  
 
 # Mengimpor kelas QTableWidgetItem dari modul QtWidgets di PyQt5
 from PyQt5.QtWidgets import QTableWidgetItem 
@@ -13,7 +13,7 @@ from PyQt5.QtGui import QImage, QPixmap
 # Mengimpor kelas QThread, pyqtSignal, dan Qt dari modul QtCore di PyQt5
 from PyQt5.QtCore import QThread, pyqtSignal, Qt ,QTranslator ,QCoreApplication
 
-
+# Mengimpor kelas QLocale dari modul QtCore di PyQt5
 from PyQt5 import QtCore
 
 
@@ -38,6 +38,7 @@ import torch
 # Mengimpor modul math untuk fungsi-fungsi matematika dasar
 import math 
 
+# Mengimpor kelas numberPopup dari modul number_pad
 from lib.number_pad import numberPopup
 
 # Memuat variabel lingkungan dari file .env yang terletak di /home/alldone/Desktop/sawit-yolo/.env
@@ -120,8 +121,8 @@ class Camera(QThread):
     image = None
     def __init__(self)->None:
         super().__init__()
-        # self.cam = cv2.VideoCapture(int(CameraRealtime))
-        self.cam = cv2.VideoCapture(0)
+        self.cam = cv2.VideoCapture(int(CameraRealtime))
+        # self.cam = cv2.VideoCapture(0)
         
         pass
     
@@ -129,14 +130,14 @@ class Camera(QThread):
         while True:
             
             # ret, frame = True,cv2.imread("/home/alldone/Desktop/sawit-yolo/image/palmoil_oilpalm_palmoil.webp")
-            ret, frame = True,cv2.imread("/home/alldone/Desktop/sawit-yolo/image/sawit.jpg")
+            # ret, frame = True,cv2.imread("/home/alldone/Desktop/sawit-yolo/image/sawit.jpg")
             # ret, frame = True,cv2.imread("/home/alldone/Desktop/sawit-yolo/image/sawit2.jpg")
             # ret, frame = True,cv2.imread("/home/alldone/Desktop/sawit-yolo/image/sawit3.jpg")
             # ret, frame = True,cv2.imread("/home/alldone/Desktop/sawit-yolo/image/sawit4.jpg")
             # ret, frame = True,cv2.imread("/home/alldone/Desktop/sawit-yolo/image/sawit6.png")
             # ret, frame = True,cv2.imread("/home/alldone/Desktop/sawit-yolo/image/sawit.webp")
             # ret, frame = True,cv2.imread("/home/alldone/Desktop/sawit-yolo/image/sawit.jpg")
-            # ret, frame = self.cam.read()
+            ret, frame = self.cam.read()
             if not ret:
                 break
             frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB) # convert frame to RGB 
@@ -156,7 +157,7 @@ class Inference:
         self.model = torch.hub.load(r'../yolov5', 'custom', path=ModelYolo, source='local', force_reload=True, device='cpu')
         
         # Mengatur threshold confidence model YOLOv5
-        self.model.conf = 0.7
+        self.model.conf = 0.8
         
         # Mengatur ketebalan garis untuk bingkai objek yang terdeteksi
         self.model.line_thickness = 1
@@ -215,7 +216,7 @@ class MainWindowUI(QtWidgets.QMainWindow, Ui_MainWindow):
     __lbl_take = 1
     
     
-    def setupUi(self,MainWindow):
+    def setupUi(self):
         super().setupUi(self)
         self.retranslateUi(self)
         
@@ -243,7 +244,7 @@ class MainWindowUI(QtWidgets.QMainWindow, Ui_MainWindow):
         pixmap = QPixmap.fromImage(p) # set image to pixmap
         window.setPixmap(pixmap) # set pixmap to label
         
-    
+    # inisialisasi semua variabel
     def __init__(self,MainWindow):
         super().__init__()
         self.MainWindow = MainWindow
@@ -255,9 +256,8 @@ class MainWindowUI(QtWidgets.QMainWindow, Ui_MainWindow):
         self.btn_submittodecision.clicked.connect(self.make_decision)
         self.btn_shut_1.clicked.connect(lambda: self.__set_lbl_take(1))
         self.btn_shut_2.clicked.connect(lambda: self.__set_lbl_take(2))
-        self.btn_shut_4.clicked.connect(lambda: self.__set_lbl_take(4))
         self.btn_shut_3.clicked.connect(lambda: self.__set_lbl_take(3))
-        # self.btn_shownumpad_numtree.clicked.connect(lambda: )
+        self.btn_shut_4.clicked.connect(lambda: self.__set_lbl_take(4))
         self.btn_nextpage1.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(1))
         self.btn_back2.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(0))
         self.btn_back3.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(1))
@@ -425,8 +425,7 @@ class MainWindowUI(QtWidgets.QMainWindow, Ui_MainWindow):
             self.select_language.setItemText(1, _translate("MainWindow", "Indonesia"))
             self.label_3.setText(_translate("MainWindow", "Hasil Semua Deteksi Kamera"))
             self.lbl_resultdetection_3.setText(
-            "Terlalu Matang :%s  \n" "Matang :%s \n" "Belum Matang :%s"%(self.resultalldetection[0],self.resultalldetection[1],self.resultalldetection[2]) if self.select_language.currentIndex() == 1 else "OverRipe :%s  \n" "Ripe :%s \n" "UnderRipe :%s"%(self.resultalldetection[0],self.resultalldetection[1],self.resultalldetection[2])
-        )
+            "Terlalu Matang :%s  \n" "Matang :%s \n" "Belum Matang :%s"%(self.resultalldetection[0],self.resultalldetection[1],self.resultalldetection[2]) if self.select_language.currentIndex() == 1 else "OverRipe :%s  \n" "Ripe :%s \n" "UnderRipe :%s"%(self.resultalldetection[0],self.resultalldetection[1],self.resultalldetection[2]))
             
             self.btn_back2.setText(_translate("MainWindow", "KEMBALI"))
             self.btn_showtable.setText(_translate("MainWindow", "TAMPILKAN \n" "TABEL"))
@@ -454,18 +453,9 @@ class MainWindowUI(QtWidgets.QMainWindow, Ui_MainWindow):
             self.btn_backtodetection.setText(_translate("MainWindow", "RESET \n" "KEMBALI \n" "KE \n" "DETEKSI"))
             pass
         
-            
-            
-        
-        
-        
-        
-
-
 def main() -> None:
     import sys
     app = QtWidgets.QApplication(sys.argv)
-    
     MainWindow = QtWidgets.QMainWindow()
     myui = MainWindowUI(MainWindow)
     myui.show()
