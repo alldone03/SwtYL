@@ -133,11 +133,11 @@ class Camera(QThread):
             # ret, frame = True,cv2.imread("/home/alldone/Desktop/sawit-yolo/image/sawit.jpg")
             # ret, frame = True,cv2.imread("/home/alldone/Desktop/sawit-yolo/image/sawit2.jpg")
             # ret, frame = True,cv2.imread("/home/alldone/Desktop/sawit-yolo/image/sawit3.jpg")
-            # ret, frame = True,cv2.imread("/home/alldone/Desktop/sawit-yolo/image/sawit4.jpg")
+            ret, frame = True,cv2.imread("/home/alldone/Desktop/sawit-yolo/image/sawit4.jpg")
             # ret, frame = True,cv2.imread("/home/alldone/Desktop/sawit-yolo/image/sawit6.png")
             # ret, frame = True,cv2.imread("/home/alldone/Desktop/sawit-yolo/image/sawit.webp")
             # ret, frame = True,cv2.imread("/home/alldone/Desktop/sawit-yolo/image/sawit.jpg")
-            ret, frame = self.cam.read()
+            # ret, frame = self.cam.read()
             if not ret:
                 break
             frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB) # convert frame to RGB 
@@ -248,7 +248,7 @@ class MainWindowUI(QtWidgets.QMainWindow, Ui_MainWindow):
     def __init__(self,MainWindow):
         super().__init__()
         self.MainWindow = MainWindow
-        self.setupUi(self)
+        self.setupUi()
         self.tbl_data.horizontalHeader().setVisible(True)
         self.lbl_resultdetection.setText(
             "Terlalu Matang :%s  \n" "Matang :%s \n" "Belum Matang :%s"%(self.__result_camera_detection[self.__lbl_take-1][0],self.__result_camera_detection[self.__lbl_take-1][1],self.__result_camera_detection[self.__lbl_take-1][2]) if self.select_language.currentIndex() == 1 else "OverRipe :%s  \n" "Ripe :%s \n" "UnderRipe :%s"%(self.__result_camera_detection[self.__lbl_take-1][0],self.__result_camera_detection[self.__lbl_take-1][1],self.__result_camera_detection[self.__lbl_take-1][2])
