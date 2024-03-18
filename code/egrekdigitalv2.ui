@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>640</width>
-    <height>454</height>
+    <height>428</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -24,14 +24,14 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="page">
      <widget class="QWidget" name="verticalLayoutWidget">
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>260</y>
+        <y>240</y>
         <width>271</width>
         <height>131</height>
        </rect>
@@ -133,7 +133,7 @@
       <property name="geometry">
        <rect>
         <x>490</x>
-        <y>260</y>
+        <y>240</y>
         <width>141</width>
         <height>141</height>
        </rect>
@@ -171,7 +171,7 @@
       <property name="geometry">
        <rect>
         <x>290</x>
-        <y>260</y>
+        <y>240</y>
         <width>191</width>
         <height>131</height>
        </rect>
@@ -235,7 +235,7 @@ UnderRipe :</string>
         <x>9</x>
         <y>39</y>
         <width>611</width>
-        <height>221</height>
+        <height>201</height>
        </rect>
       </property>
       <layout class="QGridLayout" name="gridLayout">
@@ -351,7 +351,7 @@ UnderRipe :</string>
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>320</y>
+        <y>290</y>
         <width>89</width>
         <height>81</height>
        </rect>
@@ -364,7 +364,7 @@ UnderRipe :</string>
       <property name="geometry">
        <rect>
         <x>530</x>
-        <y>320</y>
+        <y>290</y>
         <width>89</width>
         <height>81</height>
        </rect>
@@ -546,7 +546,7 @@ TABLE</string>
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>310</y>
+        <y>270</y>
         <width>89</width>
         <height>81</height>
        </rect>
@@ -561,7 +561,7 @@ TABLE</string>
         <x>9</x>
         <y>9</y>
         <width>611</width>
-        <height>281</height>
+        <height>251</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_5">
@@ -689,7 +689,7 @@ TABLE</string>
       <property name="geometry">
        <rect>
         <x>530</x>
-        <y>310</y>
+        <y>270</y>
         <width>89</width>
         <height>81</height>
        </rect>
