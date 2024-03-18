@@ -327,15 +327,18 @@ class MainWindowUI(QtWidgets.QMainWindow, Ui_MainWindow):
         
         mytbl = []
         self.Database.view_records(mytbl)
-        self.tbl_data.setColumnCount(len(mytbl[0]))
-        self.tbl_data.setRowCount(len(mytbl))
-        
-        for i, row in enumerate(mytbl):
-            for j, item in enumerate(row):
-                if j == 5:
-                    self.tbl_data.setItem(i, j, QTableWidgetItem(str(item if self.select_language.currentIndex() == 1 else "Ready" if item == "Siap Panen" else "Unready")))
-                else:
-                    self.tbl_data.setItem(i, j, QTableWidgetItem(str(item)))
+        try:
+            self.tbl_data.setColumnCount(len(mytbl[0]))
+            self.tbl_data.setRowCount(len(mytbl))
+            
+            for i, row in enumerate(mytbl):
+                for j, item in enumerate(row):
+                    if j == 5:
+                        self.tbl_data.setItem(i, j, QTableWidgetItem(str(item if self.select_language.currentIndex() == 1 else "Ready" if item == "Siap Panen" else "Unready")))
+                    else:
+                        self.tbl_data.setItem(i, j, QTableWidgetItem(str(item)))
+        except:
+            pass
                 
         self.stackedWidget.setCurrentIndex(2)
     
