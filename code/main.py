@@ -120,8 +120,8 @@ class Camera(QThread):
     image = None
     def __init__(self)->None:
         super().__init__()
-        self.cam = cv2.VideoCapture(int(CameraRealtime))
-        # self.cam = cv2.VideoCapture(0)
+        # self.cam = cv2.VideoCapture(int(CameraRealtime))
+        self.cam = cv2.VideoCapture(0)
         
         pass
     
