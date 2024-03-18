@@ -40,6 +40,10 @@ import math
 # Mengimpor kelas numberPopup dari modul number_pad
 from lib.number_pad import numberPopup
 
+
+import time
+
+
 # Memuat variabel lingkungan dari file .env yang terletak di /home/alldone/Desktop/sawit-yolo/.env
 load_dotenv("./.env")
 
@@ -171,6 +175,7 @@ class Inference:
         Returns:
             numpy.ndarray: Frame gambar dengan objek yang terdeteksi diberi bingkai.
         """
+        start_time = time.time()
         # Mengubah ukuran frame gambar menjadi 640x480
         cv2.resize(frame, (640, 480))
         
@@ -205,6 +210,7 @@ class Inference:
         cv_img = np.squeeze(self.results.render())
         cv2.line(cv_img, (x1, y1), (x2, y2), (0, 255, 0), 2)
         
+        print("Inference Time: ", (time.time()-start_time)* 10**3,"ms")
         return cv_img
 
 class MainWindowUI(QtWidgets.QMainWindow, Ui_MainWindow):
@@ -318,6 +324,7 @@ class MainWindowUI(QtWidgets.QMainWindow, Ui_MainWindow):
         
     # plot data to table
     def show_table(self):
+        
         mytbl = []
         self.Database.view_records(mytbl)
         self.tbl_data.setColumnCount(len(mytbl[0]))
