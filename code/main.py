@@ -157,7 +157,7 @@ class Inference:
             ModelYolo (str): Path ke model YOLOv5 yang akan digunakan.
         """
         # Memuat model YOLOv5 dari path yang diberikan
-        self.model = torch.hub.load(r'../yolov5', 'custom', path=ModelYolo, source='local', force_reload=True, device='cpu')
+        self.model = torch.hub.load(r'../yolov5', 'custom', path=str(ModelYolo), source='local', force_reload=True, device='cpu')
         
         # Mengatur threshold confidence model YOLOv5
         self.model.conf = 0.8
