@@ -16,7 +16,6 @@ from PyQt5.QtCore import QThread, pyqtSignal, Qt ,QTranslator ,QCoreApplication
 # Mengimpor kelas QLocale dari modul QtCore di PyQt5
 from PyQt5 import QtCore
 
-
 # Mengimpor pustaka numpy dan menamainya sebagai np
 import numpy as np 
 
@@ -133,11 +132,11 @@ class Camera(QThread):
             # ret, frame = True,cv2.imread("/home/alldone/Desktop/sawit-yolo/image/sawit.jpg")
             # ret, frame = True,cv2.imread("/home/alldone/Desktop/sawit-yolo/image/sawit2.jpg")
             # ret, frame = True,cv2.imread("/home/alldone/Desktop/sawit-yolo/image/sawit3.jpg")
-            ret, frame = True,cv2.imread("/home/alldone/Desktop/sawit-yolo/image/sawit4.jpg")
+            # ret, frame = True,cv2.imread("/home/alldone/Desktop/sawit-yolo/image/sawit4.jpg")
             # ret, frame = True,cv2.imread("/home/alldone/Desktop/sawit-yolo/image/sawit6.png")
             # ret, frame = True,cv2.imread("/home/alldone/Desktop/sawit-yolo/image/sawit.webp")
             # ret, frame = True,cv2.imread("/home/alldone/Desktop/sawit-yolo/image/sawit.jpg")
-            # ret, frame = self.cam.read()
+            ret, frame = self.cam.read()
             if not ret:
                 break
             frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB) # convert frame to RGB 
@@ -342,7 +341,6 @@ class MainWindowUI(QtWidgets.QMainWindow, Ui_MainWindow):
         else:
             # mengambil nilai tertinggi dari hasil deteksi
             max_index = self.resultalldetection.index(max(self.resultalldetection))
-            
             if self.buahjatuh_classification(self.sbox_inputbrondolan.value()) <= 1 and max_index <= 1:
                 self.value_keputusan = "Siap Panen"
             elif self.buahjatuh_classification(self.sbox_inputbrondolan.value()) == 2 and max_index == 2:
