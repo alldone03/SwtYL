@@ -426,6 +426,7 @@ def main() -> None:
     import sys
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
+    
     # MainWindow.showMaximized()
     ui = Ui_MainWindow()
     ui.setupUi(MainWindow)
