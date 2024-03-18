@@ -41,10 +41,10 @@ import math
 from lib.number_pad import numberPopup
 
 # Memuat variabel lingkungan dari file .env yang terletak di /home/alldone/Desktop/sawit-yolo/.env
-load_dotenv("/home/alldone/Desktop/sawit-yolo/.env")
+load_dotenv("./.env")
 
 # show no image
-no_image = cv2.imread("/home/alldone/Desktop/sawit-yolo/image/No_Image.png")
+no_image = cv2.imread("./image/No_Image.png")
 ModelYolo = os.getenv("MODEL_YOLO")
 PathYolo = os.getenv("PATH_YOLO")
 CameraRealtime = os.getenv("CAMERA_YOLO")
