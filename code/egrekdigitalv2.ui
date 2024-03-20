@@ -258,6 +258,22 @@ UnderRipe :</string>
          </property>
         </widget>
        </item>
+       <item row="0" column="1">
+        <spacer name="horizontalSpacer">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Fixed</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>50</width>
+           <height>6</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
        <item row="0" column="0">
         <widget class="QLabel" name="disp_camera">
          <property name="sizePolicy">
@@ -277,31 +293,15 @@ UnderRipe :</string>
          </property>
         </widget>
        </item>
-       <item row="0" column="1">
-        <spacer name="horizontalSpacer">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-         <property name="sizeType">
-          <enum>QSizePolicy::Fixed</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>50</width>
-           <height>6</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
       </layout>
      </widget>
      <widget class="QComboBox" name="select_language">
       <property name="geometry">
        <rect>
         <x>700</x>
-        <y>40</y>
+        <y>10</y>
         <width>81</width>
-        <height>81</height>
+        <height>31</height>
        </rect>
       </property>
       <item>
@@ -314,6 +314,32 @@ UnderRipe :</string>
         <string>Indonesian</string>
        </property>
       </item>
+     </widget>
+     <widget class="QPushButton" name="btn_switchtoenglish">
+      <property name="geometry">
+       <rect>
+        <x>700</x>
+        <y>60</y>
+        <width>81</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>English</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btn_switchtoindonesia">
+      <property name="geometry">
+       <rect>
+        <x>700</x>
+        <y>150</y>
+        <width>81</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Indonesian</string>
+      </property>
      </widget>
     </widget>
     <widget class="QWidget" name="page_2">

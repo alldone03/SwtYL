@@ -274,7 +274,12 @@ class MainWindowUI(QtWidgets.QMainWindow, Ui_MainWindow):
         self.camera.start()
         self.btn_shownumpad_numtree.clicked.connect(lambda: self.show_numpad_numbertree())
         self.btn_shownumpad_inputbrondolan.clicked.connect(lambda: self.show_numpad_brondolan())
+        self.btn_switchtoenglish.clicked.connect(lambda: self.switch_language(0))
+        self.btn_switchtoindonesia.clicked.connect(lambda: self.switch_language(1))
     
+    def switch_language(self,number):
+        self.select_language.setCurrentIndex(number)
+        self.change_language()
     #show Numpad 
     def show_numpad_numbertree(self):
         self.MainWindow.setEnabled(False)
