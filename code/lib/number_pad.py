@@ -148,6 +148,7 @@ class numberPopup(QWidget):
         QtCore.QMetaObject.connectSlotsByName(self)
         self.exPopup = None
         self.initUI()
+        
     def initUI(self):
         _translate = QtCore.QCoreApplication.translate
         self.setWindowFlags(Qt.Popup)
