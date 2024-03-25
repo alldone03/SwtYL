@@ -223,8 +223,31 @@ class MainWindowUI(QtWidgets.QMainWindow, Ui_MainWindow):
     __lbl_take = 1
     
     
-    def setupUi(self):
+    def setupUi(self,MainWindow):
         super().setupUi(self)
+        self.MainWindow = MainWindow
+        self.tbl_data.horizontalHeader().setVisible(True)
+        self.lbl_resultdetection.setText(
+            "Terlalu Matang :%s  \n" "Matang :%s \n" "Belum Matang :%s"%(self.__result_camera_detection[self.__lbl_take-1][0],self.__result_camera_detection[self.__lbl_take-1][1],self.__result_camera_detection[self.__lbl_take-1][2]) if self.select_language.currentIndex() == 1 else "OverRipe :%s  \n" "Ripe :%s \n" "UnderRipe :%s"%(self.__result_camera_detection[self.__lbl_take-1][0],self.__result_camera_detection[self.__lbl_take-1][1],self.__result_camera_detection[self.__lbl_take-1][2])
+            )
+        self.btn_submittodecision.clicked.connect(self.make_decision)
+        self.btn_shut_1.clicked.connect(lambda: self.__set_lbl_take(1))
+        self.btn_shut_2.clicked.connect(lambda: self.__set_lbl_take(2))
+        self.btn_shut_3.clicked.connect(lambda: self.__set_lbl_take(3))
+        self.btn_shut_4.clicked.connect(lambda: self.__set_lbl_take(4))
+        self.btn_nextpage1.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(1))
+        self.btn_back2.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(0))
+        self.btn_back3.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(1))
+        self.btn_backtodetection.clicked.connect(lambda: self.reset_all_detection())
+        self.select_language.currentIndexChanged.connect(lambda: self.change_language())
+        self.btn_showtable.clicked.connect(lambda: self.show_table())
+        self.btn_capture.clicked.connect(self.btn_capture_clicked)
+        self.camera.frameCaptured.connect(lambda: self.__show_image(self.camera.image,self.disp_camera))
+        self.camera.start()
+        self.btn_shownumpad_numtree.clicked.connect(lambda: self.show_numpad_numbertree())
+        self.btn_shownumpad_inputbrondolan.clicked.connect(lambda: self.show_numpad_brondolan())
+        self.btn_switchtoenglish.clicked.connect(lambda: self.switch_language(0))
+        self.btn_switchtoindonesia.clicked.connect(lambda: self.switch_language(1))
         self.retranslateUi(self)
         
         
@@ -252,32 +275,10 @@ class MainWindowUI(QtWidgets.QMainWindow, Ui_MainWindow):
         window.setPixmap(pixmap) # set pixmap to label
         
     # inisialisasi semua variabel
-    def __init__(self,MainWindow):
-        super().__init__()
-        self.MainWindow = MainWindow
-        self.setupUi()
-        self.tbl_data.horizontalHeader().setVisible(True)
-        self.lbl_resultdetection.setText(
-            "Terlalu Matang :%s  \n" "Matang :%s \n" "Belum Matang :%s"%(self.__result_camera_detection[self.__lbl_take-1][0],self.__result_camera_detection[self.__lbl_take-1][1],self.__result_camera_detection[self.__lbl_take-1][2]) if self.select_language.currentIndex() == 1 else "OverRipe :%s  \n" "Ripe :%s \n" "UnderRipe :%s"%(self.__result_camera_detection[self.__lbl_take-1][0],self.__result_camera_detection[self.__lbl_take-1][1],self.__result_camera_detection[self.__lbl_take-1][2])
-            )
-        self.btn_submittodecision.clicked.connect(self.make_decision)
-        self.btn_shut_1.clicked.connect(lambda: self.__set_lbl_take(1))
-        self.btn_shut_2.clicked.connect(lambda: self.__set_lbl_take(2))
-        self.btn_shut_3.clicked.connect(lambda: self.__set_lbl_take(3))
-        self.btn_shut_4.clicked.connect(lambda: self.__set_lbl_take(4))
-        self.btn_nextpage1.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(1))
-        self.btn_back2.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(0))
-        self.btn_back3.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(1))
-        self.btn_backtodetection.clicked.connect(lambda: self.reset_all_detection())
-        self.select_language.currentIndexChanged.connect(lambda: self.change_language())
-        self.btn_showtable.clicked.connect(lambda: self.show_table())
-        self.btn_capture.clicked.connect(self.btn_capture_clicked)
-        self.camera.frameCaptured.connect(lambda: self.__show_image(self.camera.image,self.disp_camera))
-        self.camera.start()
-        self.btn_shownumpad_numtree.clicked.connect(lambda: self.show_numpad_numbertree())
-        self.btn_shownumpad_inputbrondolan.clicked.connect(lambda: self.show_numpad_brondolan())
-        self.btn_switchtoenglish.clicked.connect(lambda: self.switch_language(0))
-        self.btn_switchtoindonesia.clicked.connect(lambda: self.switch_language(1))
+    # def __init__(self,MainWindow):
+    #     super().__init__()
+    #     self.setupUi(MainWindow)
+        
     
     def switch_language(self,number):
         self.select_language.setCurrentIndex(number)
@@ -286,15 +287,17 @@ class MainWindowUI(QtWidgets.QMainWindow, Ui_MainWindow):
     def show_numpad_numbertree(self):
         self.MainWindow.setEnabled(False)
         self.exPopup = numberPopup(self.MainWindow,0, "", self.callBackOnSubmit_numbertree , "Argument 1", "Argument 2")
-        self.exPopup.setGeometry(0, 0,400, 300)
+        self.exPopup.setGeometry(200, 50,400, 300)
         self.exPopup.show()
         pass
     def show_numpad_brondolan(self):
         self.MainWindow.setEnabled(False)
         self.exPopup = numberPopup(self.MainWindow,0, "", self.callBackOnSubmit_brondolan , "Argument 1", "Argument 2")
-        self.exPopup.setGeometry(0, 0,400, 300)
+        self.exPopup.setGeometry(200, 50,400, 300)
         self.exPopup.show()
         pass
+    
+    
     def callBackOnSubmit_numbertree(self, arg1, arg2,data)->None:
         self.sbox_inputnumbertree.setValue(int(0 if data == 0 else data))
         
@@ -472,7 +475,8 @@ def main() -> None:
     import sys
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
-    myui = MainWindowUI(MainWindow)
+    myui = MainWindowUI()
+    myui.setupUi(MainWindow)
     print(ModelYolo)
     # if ModelYolo != "/home/alldone/Desktop/sawit-yolo/model/content/yolov5/runs/train/exp5/weights/best.pt":
     #     MainWindow.showMaximized()
