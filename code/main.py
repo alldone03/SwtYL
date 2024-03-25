@@ -133,14 +133,14 @@ class Camera(QThread):
         while True:
             
             # ret, frame = True,cv2.imread("/home/alldone/Desktop/sawit-yolo/image/palmoil_oilpalm_palmoil.webp")
-            ret, frame = True,cv2.imread("/home/alldone/Desktop/sawit-yolo/image/sawit.jpg")
+            # ret, frame = True,cv2.imread("/home/alldone/Desktop/sawit-yolo/image/sawit.jpg")
             # ret, frame = True,cv2.imread("/home/alldone/Desktop/sawit-yolo/image/sawit2.jpg")
             # ret, frame = True,cv2.imread("/home/alldone/Desktop/sawit-yolo/image/sawit3.jpg")
             # ret, frame = True,cv2.imread("/home/alldone/Desktop/sawit-yolo/image/sawit4.jpg")
             # ret, frame = True,cv2.imread("/home/alldone/Desktop/sawit-yolo/image/sawit6.png")
             # ret, frame = True,cv2.imread("/home/alldone/Desktop/sawit-yolo/image/sawit.webp")
             # ret, frame = True,cv2.imread("/home/alldone/Desktop/sawit-yolo/image/sawit.jpg")
-            # ret, frame = self.cam.read()
+            ret, frame = self.cam.read()
             if not ret:
                 break
             frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB) # convert frame to RGB 
