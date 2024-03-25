@@ -1,5 +1,5 @@
 import sys
-sys.path.append('/home/alldone/Desktop/sawit-yolo/code/lib')
+sys.path.append('./code/lib')
 
 from keypad import Ui_Dialog  # Import the generated Python code from your UI file
 
