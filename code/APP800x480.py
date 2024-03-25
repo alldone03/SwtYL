@@ -60,8 +60,8 @@ class Camera(QThread):
                        force_reload=True, device='cpu')
     def __init__(self) -> None:
         super().__init__()
-        self.capture = cv2.VideoCapture(int(CameraRealtime)) # capture video from camera
-        # self.capture = cv2.VideoCapture(0) # capture video from camera
+        # self.capture = cv2.VideoCapture(int(CameraRealtime)) # capture video from camera
+        self.capture = cv2.VideoCapture(0) # capture video from camera
         
         self.model.conf = 0.7
         self.model.line_thickness = 1
