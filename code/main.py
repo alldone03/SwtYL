@@ -474,8 +474,8 @@ def main() -> None:
     MainWindow = QtWidgets.QMainWindow()
     myui = MainWindowUI(MainWindow)
     print(ModelYolo)
-    if ModelYolo != "/home/alldone/Desktop/sawit-yolo/model/content/yolov5/runs/train/exp5/weights/best.pt":
-        MainWindow.showMaximized()
+    # if ModelYolo != "/home/alldone/Desktop/sawit-yolo/model/content/yolov5/runs/train/exp5/weights/best.pt":
+    #     MainWindow.showMaximized()
     myui.show()
     sys.exit(app.exec_())
             

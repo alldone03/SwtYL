@@ -70,7 +70,8 @@ class Camera(QThread):
     # load images from camera
     def run(self)->None:
         while True:
-            ret, frame = self.capture.read() # read frame from camera
+            # ret, frame = self.capture.read() # read frame from camera
+            ret, frame = True,cv2.imread("/home/alldone/Desktop/sawit-yolo/image/sawit.jpg")
             self.saved_frame = frame.copy()
             if ret:
                 frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB) # convert frame to RGB 
