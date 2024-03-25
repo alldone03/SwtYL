@@ -1,0 +1,44 @@
+alat mas savero di minta
+untuk alat kemarin sudah ditanyakan ke mas khotib , sudah dibawa oleh mas hamam
+
+raspberry pi autostart program   
+tambahkan perintah jalankan program pada /etc/rc.local
+
+mencari kabel HDMI tekuk
+
+
+
+mencari 4g GSM
+saya memilih ini karena lebih ringkas dan daya yang digunakan adalah 5V 2A, ketika ditambahkan alat seperti ini apakah diperlukan penambahan baterai?
+https://shopee.co.id/-Ready-Stock-Modem-WIFI-USB-4g-All-Operator-LTE-Modem-USB-500Mbps-Modem-Mifi-COD-Support-10-Devices-i.912774831.22615941275?sp_atk=a257842a-64ce-47ce-a282-587b425ac3bd&xptdk=a257842a-64ce-47ce-a282-587b425ac3bd
+https://shopee.co.id/-Ready-Stock-Modem-WIFI-4g-All-Operator-150-Mbps-Modem-Mifi-4G-LTE-Modem-WIFI-Travel-USB-Mobile-WIFI-Support-10-Devices-COD-i.912774831.20866805659?sp_atk=bb49efca-40ce-46d7-9464-17b7fa6a7aaa&xptdk=bb49efca-40ce-46d7-9464-17b7fa6a7aaa
+
+indikator baterai
+indikator baterai apakah yang cocok memakai seperti ini?
+https://shopee.co.id/1S-8S-Lithium-Battery-Level-Indicator-Capacity-Module-AIFRobotic-i.214108565.22484176071?sp_atk=82ea1571-aa76-4eb2-a99b-68b163bcb42d&xptdk=82ea1571-aa76-4eb2-a99b-68b163bcb42d
+
+
+baterai
+saran baterai yagn digunakan apakah seperti ini? kemarin saya menggunakan baterai serupa memiliki daya tahan 2 jam dalam pemakaian idle
+https://shopee.co.id/baterai-18650-battery-laptop-emergancy-real-cek-mah-i.122247280.5644047002?xptdk=73d07e80-7403-452e-a2d9-be49f517f28c
+
+kemungkinan beli BMS lagi atau tidak?
+https://shopee.co.id/3S-12V-20A-dan-40A-BMS-Charger-Li-ion-Lithium-Battery-Protection-Board-i.122247280.9201825353?sp_atk=2a6e74f7-9912-4d59-be6d-be6654946b7d&xptdk=2a6e74f7-9912-4d59-be6d-be6654946b7d
+
+adaptor
+adaptor yang diperlukan berapa ampere?
+https://shopee.co.id/ADAPTOR-DC-12V-2A-3A-MURNI-TRAFO-POWER-SUPPLY-UNTUK-LAMPU-STRIP-ALL-CCTV-DVR-HDD-ADP-PSU-BNC-DRAT-i.304276455.15985097815?sp_atk=f5951548-d5f9-42af-830a-323bb20aba08&xptdk=f5951548-d5f9-42af-830a-323bb20aba08
+
+
+socket female DC
+yang bentuknya bagaimana?
+https://shopee.co.id/soket-socket-DC-in-female-bulat-2.1x5.5mm-i.80193237.11022718466?sp_atk=931b7f5c-94bb-4468-8ae6-17aca9eee9b5&xptdk=931b7f5c-94bb-4468-8ae6-17aca9eee9b5
+
+USB male to female
+apakah membuat kabel sendiri?
+https://shopee.co.id/COVER-USB-4-Pin-Plug-Socket-Connector-Kosong-Jantan-Male-Betina-Female-i.80193237.16012576569?sp_atk=8eb25a79-bae3-4c01-aea2-085c088cb84e&xptdk=8eb25a79-bae3-4c01-aea2-085c088cb84e
+
+apakah perlu memperbanyak pembelian baterai? kemarin ketika rapat dengan pak eru disarankan untuk membeli baterai, bms, buckconverter ketika sudah digunakan di lapangan
+
+
+
