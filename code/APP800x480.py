@@ -18,7 +18,7 @@ load_dotenv()
 ModelYolo = os.getenv("MODEL_YOLO")
 PathYolo = os.getenv("PATH_YOLO")
 CameraRealtime = os.getenv("CAMERA_YOLO")
-print("Use Model: " + ModelYolo+"\nYolo Path: "+PathYolo+"\nID Camera: "+CameraRealtime)
+print("Use Model: " + str(ModelYolo)+"\nYolo Path: "+str(PathYolo)+"\nID Camera: "+str(CameraRealtime))
 
 class Database:
     def __init__(self) -> None:
