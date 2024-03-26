@@ -5,7 +5,7 @@ from egrekdigitalv2 import Ui_MainWindow
 from PyQt5 import QtWidgets  
 
 # Mengimpor kelas QTableWidgetItem dari modul QtWidgets di PyQt5
-from PyQt5.QtWidgets import QTableWidgetItem 
+from PyQt5.QtWidgets import QTableWidgetItem ,QDialog
 
 # Mengimpor kelas QImage dan QPixmap dari modul QtGui di PyQt5
 from PyQt5.QtGui import QImage, QPixmap 
@@ -38,7 +38,8 @@ import torch
 import math 
 
 # Mengimpor kelas numberPopup dari modul number_pad
-from lib.number_pad import numberPopup
+from lib.logickeypad import mykeypad
+
 
 
 import time
@@ -215,11 +216,11 @@ class Inference:
         print("Inference Time: ", (time.time()-start_time)* 10**3,"ms")
         return cv_img
 
-class MainWindowUI(QtWidgets.QMainWindow, Ui_MainWindow):
+class MainWindowUI(QtWidgets.QMainWindow, Ui_MainWindow, QDialog):
     camera = Camera() # create camera object
     Inference = Inference() # create inference object
     Database = Database() # create database object
-    # numpad = numberPopup()
+    
     __lbl_take = 1
     
     
@@ -273,36 +274,27 @@ class MainWindowUI(QtWidgets.QMainWindow, Ui_MainWindow):
         p = convert_to_qt_format.scaled(299, 269, Qt.KeepAspectRatio) # scale image
         pixmap = QPixmap.fromImage(p) # set image to pixmap
         window.setPixmap(pixmap) # set pixmap to label
-        
-    # inisialisasi semua variabel
-    # def __init__(self,MainWindow):
-    #     super().__init__()
-    #     self.setupUi(MainWindow)
-        
+
     
     def switch_language(self,number):
         self.select_language.setCurrentIndex(number)
         self.change_language()
     #show Numpad 
-    def show_numpad_numbertree(self):
-        self.MainWindow.setEnabled(False)
-        self.exPopup = numberPopup(self.MainWindow,0, "", self.callBackOnSubmit_numbertree , "Argument 1", "Argument 2")
-        self.exPopup.setGeometry(200, 50,400, 300)
-        self.exPopup.show()
-        pass
-    def show_numpad_brondolan(self):
-        self.MainWindow.setEnabled(False)
-        self.exPopup = numberPopup(self.MainWindow,0, "", self.callBackOnSubmit_brondolan , "Argument 1", "Argument 2")
-        self.exPopup.setGeometry(200, 50,400, 300)
-        self.exPopup.show()
-        pass
-    
-    
-    def callBackOnSubmit_numbertree(self, arg1, arg2,data)->None:
-        self.sbox_inputnumbertree.setValue(int(0 if data == 0 else data))
+    def show_numpad_numbertree(self) -> None:
         
-    def callBackOnSubmit_brondolan(self, arg1, arg2,data)->None:
-        self.sbox_inputbrondolan.setValue(int(0 if data == 0 else data))
+        myui = mykeypad(self,self.sbox_inputnumbertree)
+        myui.exec_()
+        
+        pass
+    def show_numpad_brondolan(self) -> None:
+        
+        myui = mykeypad(self,self.sbox_inputbrondolan)
+        myui.exec_()
+       
+        pass
+    
+    
+
     
     #change language
     def change_language(self):

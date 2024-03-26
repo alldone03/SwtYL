@@ -7,9 +7,9 @@ from keypad import Ui_Dialog  # Import the generated Python code from your UI fi
 from PyQt5.QtWidgets import QDialog
 
 class mykeypad(Ui_Dialog,QDialog):
-    def __init__(self,lineedit,parent=None,):
-        super().__init__(parent,lineedit)
-        self.lineEdit = lineedit
+    def __init__(self,parent=None,line_edit=None):
+        super().__init__(parent)
+        self.parentLineEdit = line_edit
         self.setupUi(self)
     def setupUi(self,Dialog):
         super().setupUi(Dialog=Dialog)
@@ -30,7 +30,7 @@ class mykeypad(Ui_Dialog,QDialog):
         
         
     def pb_clicked(self,button):
-        print("Button clicked"+ str(button))
+        # print("Button clicked"+ str(button))
         
         if button == "del":
             self.lineEdit.setText(self.lineEdit.text()[:-1])
@@ -39,8 +39,8 @@ class mykeypad(Ui_Dialog,QDialog):
         elif button == "cancel":
             self.close()
         elif button == "submit":
-            main_window = self.parent()
-            main_window.line_edit.setText(self.lineEdit.text())
+            # main_window = self.parent()
+            self.parentLineEdit.setValue(int(self.lineEdit.text()))
             self.close()
         else: 
             self.lineEdit.setText(self.lineEdit.text()+str(button))
